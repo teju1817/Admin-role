@@ -1,72 +1,94 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const loginForm = document.getElementById('loginForm');
-  const loginErrorMessage = document.getElementById('loginErrorMessage');
-  const showSignup = document.getElementById('showSignup');
-  const showLogin = document.getElementById('showLogin');
-
-  // Regular Expression for Email Validation (Optional)
-  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-  // Switch between Login and Signup form
-  showSignup.addEventListener('click', () => {
-    document.getElementById('loginForm').classList.remove('active');
-    document.getElementById('signupForm').classList.add('active');
-  });
-
-  showLogin.addEventListener('click', () => {
-    document.getElementById('signupForm').classList.remove('active');
-    document.getElementById('loginForm').classList.add('active');
-  });
-
-  // Handle login form submission
-  loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const loginUsername = document.getElementById('login-username').value;
-    const loginPassword = document.getElementById('login-password').value;
-
-    // If email is being entered for the first time, validate it
-    const savedEmail = sessionStorage.getItem('email');
-
-    if (!savedEmail) {
-      const loginEmail = loginUsername; // Treat the username as email (if username is email format)
-      // Check if the entered email is valid using a regular expression (optional)
-      if (!emailPattern.test(loginEmail)) {
-        loginErrorMessage.textContent = "Please enter a valid email address.";
-        return;
-      } else {
-        // Save the email if it's valid
-        sessionStorage.setItem('email', loginEmail);
-      }
-    }
-
-    // Save the username for future use (if needed)
-    sessionStorage.setItem('username', loginUsername);
+    const sections = document.querySelectorAll('.admin-section');
+    const navbarLinks = document.querySelectorAll('.navbar ul li');
     
-    // Redirect to the dashboard (successful login)
-    window.location.href = 'dashboard.html'; // Make sure your dashboard.html exists
-  });
-
-  // Signup form submission logic
-  document.getElementById('signupForm').addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const signupUsername = document.getElementById('signup-username').value;
-    const signupEmail = document.getElementById('signup-email').value;
-    const signupPassword = document.getElementById('signup-password').value;
-
-    // Check if the email is valid (optional)
-    if (!emailPattern.test(signupEmail)) {
-      signupErrorMessage.textContent = "Please enter a valid email address.";
-      return;
+    // Toggle active section
+    navbarLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        // Remove active class from all
+        navbarLinks.forEach(item => item.classList.remove('active'));
+        sections.forEach(section => section.classList.remove('active'));
+  
+        // Add active class to clicked link and its section
+        link.classList.add('active');
+        document.getElementById(link.getAttribute('data-target')).classList.add('active');
+      });
+    });
+  
+    // Get table body for users
+    const usersTableBody = document.getElementById('users-table-body');
+    
+    // Add new user to the table dynamically
+    function addUserToTable(id, username, email) {
+      const newRow = document.createElement('tr');
+      newRow.innerHTML = `
+        <td>${id}</td>
+        <td>${username}</td>
+        <td>${email}</td>
+        <td>
+          <button class="edit-btn">Edit</button>
+          <button class="delete-btn">Delete</button>
+        </td>
+      `;
+      usersTableBody.appendChild(newRow);
+      
+      // Enable delete and edit buttons for the new row
+      enableDeleteButton();
+      enableEditButton();
     }
-
-    if (signupUsername && signupEmail && signupPassword) {
-      alert('Signup successful!');
-      document.getElementById('signupForm').classList.remove('active');
-      document.getElementById('loginForm').classList.add('active');
-    } else {
-      signupErrorMessage.textContent = 'Please fill all fields correctly.';
+  
+    // Add a test user (example: JohnDoe) on page load
+    addUserToTable(1, "JohnDoe", "johndoe@example.com");
+  
+    // Function to enable delete button functionality for all delete buttons
+    function enableDeleteButton() {
+      const deleteButtons = document.querySelectorAll('.delete-btn');
+      deleteButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+          const row = e.target.closest('tr');
+          row.remove(); // Remove the row from the table
+        });
+      });
     }
+  
+    // Function to enable edit button functionality for all edit buttons
+    function enableEditButton() {
+      const editButtons = document.querySelectorAll('.edit-btn');
+      editButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+          const row = e.target.closest('tr');
+          const username = row.cells[1].textContent;
+          const email = row.cells[2].textContent;
+          const newUsername = prompt("Edit Username:", username);
+          const newEmail = prompt("Edit Email:", email);
+  
+          // If new values are provided, update the row
+          if (newUsername && newEmail) {
+            row.cells[1].textContent = newUsername;
+            row.cells[2].textContent = newEmail;
+          }
+        });
+      });
+    }
+  
+    // Attach event listeners for delete and edit buttons on initial load as well
+    enableDeleteButton();
+    enableEditButton();
+  
+    // Example: Add user when 'Add User' button is clicked
+    document.getElementById('add-user-btn').addEventListener('click', () => {
+      const id = usersTableBody.rows.length + 1; // Generate new ID
+      const username = prompt("Enter Username:");
+      const email = prompt("Enter Email:");
+  
+      if (username && email) {
+        addUserToTable(id, username, email);
+      } else {
+        alert("Please fill both fields.");
+      }
+    });
   });
-});
+  
+  
+  
+  

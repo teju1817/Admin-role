@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Management Panel</title>
+  <link rel="stylesheet" href="admin-styles.css">
+</head>
+<body>
+  <div class="admin-container">
+    <!-- Horizontal Navigation Bar -->
+    <nav class="navbar">
+      <ul>
+        <li data-target="users-section" class="active">Manage Users</li>
+        <li data-target="products-section">Manage Products</li>
+        <li data-target="suppliers-section">Manage Suppliers</li>
+        <li data-target="stock-section">Manage Stock</li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Users Section -->
+      <section id="users-section" class="admin-section active">
+        <h3>Manage Users</h3>
+        <button id="add-user-btn" class="add-btn">Add User</button>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="users-table-body">
+            <!-- Dynamic content here -->
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Products Section -->
+      <section id="products-section" class="admin-section">
+        <h3>Manage Products</h3>
+        <button id="add-product-btn" class="add-btn">Add Product</button>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Product Name</th>
+              <th>Price</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="products-table-body">
+            <!-- Dynamic content here -->
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Suppliers Section -->
+      <section id="suppliers-section" class="admin-section">
+        <h3>Manage Suppliers</h3>
+        <button id="add-supplier-btn" class="add-btn">Add Supplier</button>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Supplier Name</th>
+              <th>Contact</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="suppliers-table-body">
+            <!-- Dynamic content here -->
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Stock Section -->
+      <section id="stock-section" class="admin-section">
+        <h3>Manage Stock</h3>
+        <button id="add-stock-btn" class="add-btn">Add Stock</button>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Item</th>
+              <th>Quantity</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="stock-table-body">
+            <!-- Dynamic content here -->
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+
+  <!-- JavaScript for Admin Panel -->
+  <script src="admin-scripts.js"></script>
+</body>
+</html>

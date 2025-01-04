@@ -1,0 +1,89 @@
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+  }
+  
+  /* Admin Container */
+  .admin-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  /* Horizontal Navbar */
+  .navbar {
+    background-color: #007bff;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem;
+  }
+  
+  .navbar ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .navbar ul li {
+    padding: 0.8rem 1.2rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+  }
+  
+  .navbar ul li:hover, .navbar ul li.active {
+    background-color: #003f7f;
+  }
+  
+  /* Main Content */
+  .main-content {
+    flex: 1;
+    padding: 2rem;
+  }
+  
+  .admin-section {
+    display: none;
+  }
+  
+  .admin-section.active {
+    display: block;
+  }
+  
+  /* Table Styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  table th, table td {
+    padding: 1rem;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  table th {
+    background-color: #f4f4f4;
+  }
+  
+  .add-btn {
+    background-color: #28a745;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+  
+  .add-btn:hover {
+    background-color: #218838;
+  }
+  

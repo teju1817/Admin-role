@@ -86,4 +86,159 @@ body, html {
   .add-btn:hover {
     background-color: #218838;
   }
+  /* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7fc;
+  }
+  
+  .admin-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .admin-header {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .admin-header .logo h1 {
+    margin: 0;
+  }
+  
+  .admin-header .header-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .admin-header .header-nav ul li {
+    margin-left: 20px;
+  }
+  
+  .admin-header .header-nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .admin-header .header-nav ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Navbar */
+  .navbar {
+    background-color: #0073e6;
+    padding: 10px;
+  }
+  
+  .navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .navbar ul li {
+    margin-right: 20px;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .navbar ul li.active {
+    font-weight: bold;
+    border-bottom: 2px solid white;
+  }
+  
+  /* Main Content Area */
+  .main-content {
+    padding: 20px;
+    flex-grow: 1;
+  }
+  
+  .admin-section {
+    display: none;
+  }
+  
+  .admin-section.active {
+    display: block;
+  }
+  
+  h3 {
+    color: #333;
+  }
+  
+  button.add-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  button.add-btn:hover {
+    background-color: #218838;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  table, th, td {
+    border: 1px solid #ddd;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  button.edit-btn, button.delete-btn {
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button.edit-btn {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  button.delete-btn {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  button.edit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  button.delete-btn:hover {
+    background-color: #c82333;
+  }
+  
+  /* Footer */
+  .admin-footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+  }
   
